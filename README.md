@@ -26,5 +26,4 @@ de acceso a la DB y el server port.
 | framework   | version  | 
 | ----------- | -------- |
 | Spring Boot |  2.1.4   | 
-| ----------- | -------- | 
 |  Angular    |  8.3.20  |
