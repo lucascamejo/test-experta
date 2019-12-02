@@ -1,0 +1,69 @@
+<div style="text-align: center">
+    <h1>{{message}}</h1>
+</div>
+
+<div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h3>Register</h3>
+                <form [formGroup]="registerForm" (ngSubmit)="createUserComponent()">
+
+                    <div class="form-group">
+                        <label>Nombre</label>
+                        <input type="text" for="name" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted &amp;&amp; registerForm.controls.name.errors }" />
+                        <div *ngIf="submitted &amp;&amp; registerForm.controls.name.errors" class="text-danger">
+                            <div *ngIf="registerForm.controls.name.errors.required">El nombre es obligatorio</div>
+                        </div>
+                    </div>                   
+
+                    <div class="form-group">
+                        <label>Apellido</label>
+                        <input type="text" for="lastname" formControlName="lastname" class="form-control" [ngClass]="{ 'is-invalid': submitted &amp;&amp; registerForm.controls.lastname.errors }" />
+                        <div *ngIf="submitted &amp;&amp; registerForm.controls.lastname.errors" class="text-danger">
+                            <div *ngIf="registerForm.controls.lastname.errors.required">El apellido es obligatorio</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="text" for="email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted &amp;&amp; registerForm.controls.email.errors }" />
+                        <div *ngIf="submitted &amp;&amp; registerForm.controls.email.errors" class="text-danger">
+                            <div *ngIf="registerForm.controls.email.errors.required">El email es obligatorio</div>
+                            <div *ngIf="registerForm.controls.email.errors.email">El email ingresado no es valido</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                            <label>DNI</label>
+                            <input type="text" for="dni" formControlName="dni" class="form-control" [ngClass]="{ 'is-invalid': submitted &amp;&amp; registerForm.controls.dni.errors }" />
+                            <div *ngIf="submitted &amp;&amp; registerForm.controls.dni.errors" class="text-danger">
+                                <div *ngIf="registerForm.controls.dni.errors.required">El dni es obligatorio</div>
+                            </div>
+                    </div>
+
+                        <div class="form-group">
+                                <label > Sexo: </label><br/>                     
+                                <label  style="margin-left: 15px; margin-right: 15px" for="male">Hombre</label>  <input type="checkbox" name="gender" class="form-check-label" [checked]="currentlyChecked === check_box_type.MALE" (click)="selectCheckBox(check_box_type.MALE)">
+                                <label  style="margin: 15px" for="female">Mujer</label> <input type="checkbox" name="gender" class="form-check-label" [checked]="currentlyChecked === check_box_type.FEMALE" (click)="selectCheckBox(check_box_type.FEMALE)">
+                               
+                        </div>
+
+                        <div class="form-group">
+                                <label>Edad</label>
+                                <input type="text" for="age" formControlName="age" class="form-control" [ngClass]="{ 'is-invalid': submitted &amp;&amp; registerForm.controls.age.errors }" />
+                                <div *ngIf="submitted &amp;&amp; registerForm.controls.age.errors" class="text-danger">
+                                    <div *ngIf="registerForm.controls.age.errors.required">Edad es obligatorio</div>
+                                </div>
+                        </div>
+                    
+
+                            <div class="form-group" style="margin-top: 35px">
+                                    <button class="btn btn-success" style="margin-right: 15px" type="submit" name="submit_reg" >Crear usuario</button>
+                                    
+                                    <a [routerLink]="['/list']" class="btn btn-primary ">Regresar a la lista</a>
+                            </div>
+                                
+                </form>
+            </div>
+        </div>
+    </div>

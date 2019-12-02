@@ -1,0 +1,25 @@
+1) SELECT EMP.Nombre, EMP.DNI, DOM.Calle, CP.Poblacion, CP.Provincia, DOM.[Codigo Postal], TEL.Telefono
+FROM Empleados AS EMP
+INNER JOIN Domicilios AS DOM ON DOM.DNI = EMP.DNI
+INNER JOIN [Codigos Postales] AS CP ON CP.[Codigo Postal] = DOM.[Codigo Postal]
+INNER JOIN Telefonos AS TEL ON EMP.DNI = TEL.DNI
+ORDER BY Nombre
+
+--------------------------------------------------------------------------------
+
+2) declare @media float = (select avg(sueldo) from Empleados)
+
+SELECT CP.Provincia
+FROM Empleados AS EMP
+INNER JOIN Domicilios AS DOM  ON DOM.DNI = EMP.DNI
+INNER JOIN [Codigos Postales] AS CP  ON CP.[Codigo Postal] = DOM.[Codigo Postal]
+where emp.Sueldo > @media;
+
+
+------------------------------------------------------------------------------
+
+3) SELECT CP.Provincia, count(distinct emp.dni) as Cantidad
+FROM Empleados AS EMP
+INNER JOIN Domicilios AS DOM  ON DOM.DNI = EMP.DNI
+INNER JOIN [Codigos Postales] AS CP  ON CP.[Codigo Postal] = DOM.[Codigo Postal]
+group by cp.Provincia

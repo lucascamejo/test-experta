@@ -1,0 +1,43 @@
+<h3 class="pb-2 mb-0">Usuarios</h3>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Nombre</th>
+      <th scope="col">Apellido</th>
+      <!-- <th scope="col">Email</th> -->
+      <th scope="col">DNI</th>
+      <!-- <th scope="col">Edad</th>
+      <th scope="col">Sexo</th> -->
+      <th scope="col">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">    
+      <td>{{user.name}}</td>
+      <td>{{user.lastname}}</td>
+      <!-- <td>{{user.email}}</td> -->
+      <td>{{user.dni}}</td>
+      <!-- <td>{{user.age}}</td>
+      <td>{{user.gender}}</td> -->
+      <td>
+        <button mat-rased-button (click)="showUser(user)" class="btn btn-success btn-sm" style="margin-right: 15px">
+          <span class="glyphicon glyphicon-eye-open"></span>
+        </button> 
+      
+        <button (click)="deleteUser(user)" class="btn btn-danger btn-sm">
+          <span class="glyphicon glyphicon-trash"></span>
+        </button> 
+      
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+<div >
+
+  <!-- <button (click)="listUsers()" class="btn btn-primary" style="margin-right: 15px">
+    Listar
+  </button> -->
+  
+  <a [routerLink]="['/register']" class="btn btn-success ">Agregar</a>
+</div>
