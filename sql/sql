@@ -1,8 +1,11 @@
+SQL SERVER
+##########
+
 1) SELECT EMP.Nombre, EMP.DNI, DOM.Calle, CP.Poblacion, CP.Provincia, DOM.[Codigo Postal], TEL.Telefono
 FROM Empleados AS EMP
-INNER JOIN Domicilios AS DOM ON DOM.DNI = EMP.DNI
-INNER JOIN [Codigos Postales] AS CP ON CP.[Codigo Postal] = DOM.[Codigo Postal]
-INNER JOIN Telefonos AS TEL ON EMP.DNI = TEL.DNI
+LEFT JOIN Domicilios AS DOM ON DOM.DNI = EMP.DNI
+LEFT JOIN [Codigos Postales] AS CP ON CP.[Codigo Postal] = DOM.[Codigo Postal]
+LEFT JOIN Telefonos AS TEL ON EMP.DNI = TEL.DNI
 ORDER BY Nombre
 
 --------------------------------------------------------------------------------
@@ -13,13 +16,38 @@ SELECT CP.Provincia
 FROM Empleados AS EMP
 INNER JOIN Domicilios AS DOM  ON DOM.DNI = EMP.DNI
 INNER JOIN [Codigos Postales] AS CP  ON CP.[Codigo Postal] = DOM.[Codigo Postal]
-where emp.Sueldo > @media;
+where EMP.Sueldo > @media;
 
 
 ------------------------------------------------------------------------------
 
-3) SELECT CP.Provincia, count(distinct emp.dni) as Cantidad
+3) SELECT CP.Provincia, count(distinct EMP.dni) as Cantidad
 FROM Empleados AS EMP
 INNER JOIN Domicilios AS DOM  ON DOM.DNI = EMP.DNI
 INNER JOIN [Codigos Postales] AS CP  ON CP.[Codigo Postal] = DOM.[Codigo Postal]
-group by cp.Provincia
+group by CP.Provincia
+
+
+MySQL
+#####
+
+1)SELECT EMP.Nombre, EMP.DNI, DOM.Calle, CP.Poblacion, CP.Provincia, DOM.Codigo_postal, TEL.Telefono 
+FROM Empleados AS EMP 
+LEFT JOIN Domicilio AS DOM ON DOM.DNI = EMP.DNI 
+LEFT JOIN Codigos_postales AS CP ON CP.Codigo_postal = DOM.Codigo_postal 
+LEFT JOIN Telefonos AS TEL ON EMP.DNI = TEL.DNI 
+ORDER BY Nombre
+
+2)SET @media = (select avg(sueldo) from Empleados);
+
+SELECT CP.Provincia
+FROM Empleados AS EMP
+INNER JOIN Domicilios AS DOM  ON DOM.DNI = EMP.DNI
+INNER JOIN Codigos_postales AS CP  ON CP.Codigo_postal = DOM.Codigo_postal
+where EMP.Sueldo > @media;
+
+3) SELECT CP.Provincia, count(distinct EMP.dni) as Cantidad 
+FROM Empleados AS EMP 
+INNER JOIN Domicilios AS DOM ON DOM.DNI = EMP.DNI 
+INNER JOIN Codigos_postales AS CP ON CP.Codigo_postal = DOM.Codigo_postal 
+group by CP.Provincia
