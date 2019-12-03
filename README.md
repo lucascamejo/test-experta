@@ -4,9 +4,6 @@ Test
 ## Frontend
 
 ### Para iniciar el frontend ejecutar
-`npm run serve`
-
-or
 
 `ng serve --open`
 
