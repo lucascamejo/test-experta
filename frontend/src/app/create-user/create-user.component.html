@@ -35,7 +35,7 @@
 
                     <div class="form-group">
                             <label>DNI</label>
-                            <input type="text" for="dni" formControlName="dni" class="form-control" [ngClass]="{ 'is-invalid': submitted &amp;&amp; registerForm.controls.dni.errors }" />
+                            <input type="number" for="dni" formControlName="dni" class="form-control" [ngClass]="{ 'is-invalid': submitted &amp;&amp; registerForm.controls.dni.errors }" />
                             <div *ngIf="submitted &amp;&amp; registerForm.controls.dni.errors" class="text-danger">
                                 <div *ngIf="registerForm.controls.dni.errors.required">El dni es obligatorio</div>
                             </div>
@@ -50,7 +50,7 @@
 
                         <div class="form-group">
                                 <label>Edad</label>
-                                <input type="text" for="age" formControlName="age" class="form-control" [ngClass]="{ 'is-invalid': submitted &amp;&amp; registerForm.controls.age.errors }" />
+                                <input type="number" for="age" formControlName="age" class="form-control" [ngClass]="{ 'is-invalid': submitted &amp;&amp; registerForm.controls.age.errors }" />
                                 <div *ngIf="submitted &amp;&amp; registerForm.controls.age.errors" class="text-danger">
                                     <div *ngIf="registerForm.controls.age.errors.required">Edad es obligatorio</div>
                                 </div>
